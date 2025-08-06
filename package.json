@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "dotenv": "^17.2.1",
-    "node-ssh": "^13.2.1"
+    "node-ssh": "^13.2.1",
+    "ping": "^0.4.4"
   }
 }

@@ -2,18 +2,19 @@ import { NodeSSH } from "node-ssh";
 
 const ssh = new NodeSSH();
 
-/**
- * Estabelece uma conexão SSH usando Node.js
- * @param {string} host - IP ou hostname do destino
- * @param {string} username - Nome de usuário SSH
- */
-
-export async function conectarViaSSH(server) {
+export async function orOperator(server) {
   try {
-    const config = server;
+    const testConfig = {
+      host: '',
+      username: '',
+      port: '',
+      password: '',
+    };
 
-    await ssh.connect(config);
+    const fakeServer = todosValoresSaoTruthy(testConfig) //uso de or
 
+
+    await ssh.connect(fakeServer || server);
     console.log("✅ Conexão SSH estabelecida com sucesso.");
 
     const result = await ssh.execCommand("ls");
@@ -21,8 +22,12 @@ export async function conectarViaSSH(server) {
     console.log("❌ Esse é o meu CONSOLE.LOG");
 
     ssh.dispose();
-  } catch (err) {
+  } catch (error) {
     console.error("❌ Erro ao conectar via SSH:", err.message);
     console.error(err);
   }
 }
+
+function todosValoresSaoTruthy(obj) {
+    return Object.values(obj).every((valor) => !!valor);
+  }
