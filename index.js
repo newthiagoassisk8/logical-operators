@@ -1,5 +1,5 @@
 import { conectarViaSSH } from "./exercises/coalescing_operator.js";
-import { orOperator } from "./exercises/or.js";
+import { runOrOperator } from "./exercises/or.js";
 import { getServer, checkServerAvailability } from "./config.js";
 
 const server = getServer(1);
@@ -11,5 +11,5 @@ checkServerAvailability(server.host).then((online) => {
 
   online && console.log("✅ Servidor está online");
 
-  orOperator(server);
+  runOrOperator(server);
 });
