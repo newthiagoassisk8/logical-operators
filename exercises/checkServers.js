@@ -21,11 +21,11 @@ let myServers = [
   },
   {
     ip: "192.168.0.27",
-    machine: "notebook",
+    machine: "servidor",
   },
   {
     ip: "192.168.0.37",
-    machine: "notebook",
+    machine: "raspberry pi",
   },
 ];
 
