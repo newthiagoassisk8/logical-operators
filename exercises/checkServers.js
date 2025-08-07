@@ -1,5 +1,5 @@
-import { checkServerAvailability } from "../config.js";
-import { myServers } from "../db.js";
+import { checkServerAvailability, servers } from "../config.js";
+import { myServers ,myServersWithMissingInfo} from "../db.js";
 // Exemplo com for
 export async function checkServers(listServers) {
   for (let i = 0; i < listServers.length; i++) {
@@ -48,12 +48,26 @@ export async function checkServersWithDoWhile(listServers) {
   return listServers;
 }
 
-// TODO: Aplicar continue
-// Exemplo com continue
-export async function checkServersWithDoWhile(listServers) {
+// TODO: Aplicar continue Descobrir essa porque saída tá dando errado
+export async function foo(listServers) {
+  let i = 0
+  do {
+    const server = listServers[i];
+    if(!server?.ip){
+      i++
+      continue;
+    }
+    const statusServer = await checkServerStatus(server.ip)
+    listServers[i]['status'] = statusServer
+    console.log(server)
+    i++
+
+  } while (i < listServers.length);
+
 
 }
 
+await foo(myServersWithMissingInfo)
 function checkServerStatus(isServerUp) {
   if (isServerUp) {
     return "Up";
@@ -63,4 +77,4 @@ function checkServerStatus(isServerUp) {
 
 // await checkServers(myServers);
 // await checkServersWithForOF(myServers);
-await checkServersWithDoWhile(myServers);
+// await checkServersWithDoWhile(myServers);

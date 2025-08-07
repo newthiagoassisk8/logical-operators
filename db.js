@@ -16,3 +16,22 @@ export let myServers = [
       machine: "raspberry pi",
     },
   ];
+
+  export let myServersWithMissingInfo = [
+    {
+      ip: "192.168.0.15",
+      machine: "celular",
+    },
+    // {
+    //   ip: "",
+    //   machine: "MAC",
+    // },
+    {
+      ip: "192.168.0.27",
+      machine: "servidor",
+    },
+    {
+      ip: "192.168.0.37",
+      machine: "raspberry pi",
+    },
+  ];
